@@ -1,6 +1,7 @@
 package io.github.launchapp.singleapplauncher
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -42,8 +43,9 @@ fun LauncherSetupScreen(name: String, modifier: Modifier = Modifier) {
         Spacer(modifier = Modifier.height(16.dp))
         Text(text = "Turn your device into a dedicated launcher for a single application.")
         Spacer(modifier = Modifier.height(24.dp))
-        Button(onClick = {}) {
-            Text("Set as Default Launcher")
+        Button(
+            onClick = { Log.d("SingleAppLauncher", "Set launcher button clicked") }) {
+                Text("Set as Default Launcher")
         }
     }
 }
