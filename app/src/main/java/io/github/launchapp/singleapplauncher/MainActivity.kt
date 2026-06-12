@@ -20,7 +20,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             LaunchTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
+                    LauncherSetupScreen(
                         name = "Android",
                         modifier = Modifier.padding(innerPadding)
                     )
@@ -31,9 +31,9 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
+fun LauncherSetupScreen(name: String, modifier: Modifier = Modifier) {
     Text(
-        text = "Hello $name!",
+        text = "Welcome to $name!",
         modifier = modifier
     )
 }
@@ -42,6 +42,6 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 @Composable
 fun GreetingPreview() {
     LaunchTheme {
-        Greeting("Android")
+        LauncherSetupScreen("Single App Launcher")
     }
 }
