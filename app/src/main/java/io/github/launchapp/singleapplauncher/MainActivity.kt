@@ -20,8 +20,17 @@ import androidx.compose.ui.tooling.preview.Preview
 import io.github.launchapp.singleapplauncher.ui.theme.LaunchTheme
 
 class MainActivity : ComponentActivity() {
+    private val targetPackage = "org.videolan.vlc"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val launchIntent = packageManager.getLaunchIntentForPackage(targetPackage)
+
+        if (launchIntent != null) {
+            startActivity(launchIntent)
+            finish()
+            return
+        }
+
         enableEdgeToEdge()
         setContent {
             LaunchTheme {
