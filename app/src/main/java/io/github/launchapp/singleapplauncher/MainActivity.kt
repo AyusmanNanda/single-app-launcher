@@ -16,6 +16,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import android.content.Intent
+import android.provider.Settings
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import io.github.launchapp.singleapplauncher.ui.theme.LaunchTheme
 
@@ -47,13 +50,19 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun LauncherSetupScreen(name: String, modifier: Modifier = Modifier) {
+    val context = LocalContext.current
     Column(modifier = modifier.padding(24.dp)) {
         Text(text = name)
         Spacer(modifier = Modifier.height(16.dp))
         Text(text = "Turn your device into a dedicated launcher for a single application.")
         Spacer(modifier = Modifier.height(24.dp))
         Button(
-            onClick = { Log.d("SingleAppLauncher", "Set launcher button clicked") }) {
+            onClick = {
+                context.startActivity(
+                    Intent(Settings.ACTION_HOME_SETTINGS)
+                )
+                Log.d("SingleAppLauncher", "set default launcher button clicked")
+            }) {
                 Text("Set as Default Launcher")
         }
     }
